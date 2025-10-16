@@ -1,0 +1,145 @@
+<Defs> 
+  <ThingDef ParentName="BuildingBase">
+    <defName>Turret_TaserTurret</defName>
+    <label>wall taser turret</label>
+    <description>A short range wall mounted taser turret typically used indoors. It delivers an electric shock aimed at temporarily disrupting muscle functions and inflicting pain without usually causing significant injury.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>TurretWallMount</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>
+      <drawOffsetNorth>(0,0,0.325)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.190)</drawOffsetSouth>
+      <drawOffsetWest>(-0.18,0,0)</drawOffsetWest>
+      <drawOffsetEast>(0.18,0,0)</drawOffsetEast>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.27,0.25,0.27)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>IconTaserTurret</uiIconPath>
+    <uiIconScale>1</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>true</rotatable>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>2000</WorkToBuild>
+      <Mass>8</Mass>
+      <Beauty>-10</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>300</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <passability>Standable</passability>
+    <terrainAffordanceNeeded IsNull="True" />
+    <pathCost>0</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <costList>
+      <Steel>60</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_TaserTurret</turretGunDef>
+      <turretBurstCooldownTime>7</turretBurstCooldownTime>
+      <turretTopDrawSize>1</turretTopDrawSize>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>VWE_NonLethal</li>
+      <li>GunTurrets</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_TaserTurret</defName>
+    <label>taser turret gun</label>
+    <description>A simple automatic taser gun made to be mounted on a wall turret.</description>
+    <graphicData>
+      <texPath>TaserTurret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+	  <AccuracyTouch>0.9</AccuracyTouch>
+	  <AccuracyShort>0.7</AccuracyShort>
+	  <AccuracyMedium>0.6</AccuracyMedium>
+	  <AccuracyLong>0.5</AccuracyLong>
+      <RangedWeapon_Cooldown>7</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>TaserTurretBullet</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>9.9</range>
+        <ticksBetweenBurstShots>60</ticksBetweenBurstShots>
+        <burstShotCount>2</burstShotCount>
+		<soundCast>VWE_TaserShot_Electricity</soundCast>
+		<soundCastTail>GunTail_Heavy</soundCastTail>
+		<muzzleFlashScale>14</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+  <ThingDef ParentName="VWENL_Bullet_TaserGeneric" Class="VanillaWeaponsExpandedLaser.LaserBeamDef">
+    <defName>TaserTurretBullet</defName>
+    <label>taser shot</label>
+    <description>A high-voltage taser shot.</description>
+    <graphicData>
+      <graphicClass>Graphic_Flicker</graphicClass>
+      <texPath>Things/Projectile/Shot_TaserGun</texPath>
+      <shaderType>TransparentPostLight</shaderType>
+      <drawSize>0.5</drawSize>
+    </graphicData>
+    <textures>
+      <li>Things/Projectile/Shot_TaserGun</li>
+    </textures>
+    <seam>0</seam>
+    <flickerFrameTime>5</flickerFrameTime>
+    <causefireChance>0</causefireChance>
+    <beamWidth>2</beamWidth>
+    <lifetime>45</lifetime>
+    <projectile>
+      <damageDef>NeuroshockDMG</damageDef>
+      <damageAmountBase>1</damageAmountBase>
+      <armorPenetrationBase>0.2</armorPenetrationBase>
+      <stoppingPower>5</stoppingPower>
+    </projectile>
+  </ThingDef>
+</Defs>

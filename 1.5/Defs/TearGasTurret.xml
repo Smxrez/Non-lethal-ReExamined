@@ -1,0 +1,161 @@
+<Defs> 
+  <ThingDef ParentName="AutocannonTurret">
+    <defName>Turret_TearTurret</defName>
+    <label>tear gas turret</label>
+    <description>A modern multi-shell launcher loaded with tear gas canisters. Often setup by riot police across almost all urbworlds.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Security/TurretHeavy_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.5, 1.5)</drawSize>
+      <drawOffset>(0,0,-0.1)</drawOffset>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(1.5,0.35,1.4)</volume>
+        <offset>(0,0,-0.05)</offset>
+      </shadowData>
+    </graphicData>   
+    <uiIconPath>GasTurretIcon</uiIconPath>
+    <uiIconScale>1.25</uiIconScale>
+    <uiIconOffset>0,0.05</uiIconOffset>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <size>(2,2)</size>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>380</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>20000</WorkToBuild>
+      <Mass>8</Mass>
+      <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.98</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until empty</fuelLabel>
+        <fuelGizmoLabel>Gas remaining</fuelGizmoLabel>
+        <outOfFuelMessage>Needs more gas</outOfFuelMessage>
+        <fuelFilter><thingDefs><li>Neutroamine</li></thingDefs></fuelFilter>
+        <fuelCapacity>50</fuelCapacity>  
+        <fuelMultiplier>3</fuelMultiplier> 
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <costList>
+      <Steel>300</Steel>
+      <Plasteel>30</Plasteel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+      <Neutroamine>50</Neutroamine>
+    </costList>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_TearTurret</turretGunDef>
+      <turretBurstCooldownTime>8</turretBurstCooldownTime>
+      <turretTopDrawSize>1.5</turretTopDrawSize>
+	    <turretTopOffset>(0, 0.125)</turretTopOffset>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>VWE_NonLethal</li>
+      <li>GunTurrets</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_TearTurret</defName>
+    <label>tear gas turret launcher</label>
+    <description>A simple automatic gun made to be mounted on a turret.</description>
+    <graphicData>
+      <texPath>GasTurret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.85</AccuracyTouch>
+      <AccuracyShort>0.80</AccuracyShort>
+      <AccuracyMedium>0.75</AccuracyMedium>
+      <AccuracyLong>0.70</AccuracyLong>
+      <RangedWeapon_Cooldown>8</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>VWENL_Projectile_TearGasGrenadeTurret</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <forcedMissRadius>6</forcedMissRadius>
+        <range>32.9</range>
+        <minRange>6.9</minRange>
+        <ticksBetweenBurstShots>60</ticksBetweenBurstShots>
+        <burstShotCount>3</burstShotCount>
+		<soundCast>VWENL_Shot_GrenadeLauncher</soundCast>
+		<soundCastTail>GunTail_Medium</soundCastTail>
+		<muzzleFlashScale>14</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+	<ThingDef ParentName="BaseGrenadeProjectile">
+		<defName>VWENL_Projectile_TearGasGrenadeTurret</defName>
+		<label>tear gas grenade</label>
+		<graphicData>
+			<texPath>Things/Projectile/TearGasThrown</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>VWENL_TearGas</damageDef>
+			<!-- ARL_ToxicGas -->
+			<speed>20</speed>
+			<explosionRadius>3.9</explosionRadius>
+			<flyOverhead>true</flyOverhead>
+			<soundExplode>DispensePaste</soundExplode>
+			<postExplosionSpawnThingDef>VWENL_TearGasCloud</postExplosionSpawnThingDef>
+			<!-- ARL_ToxicGasCloud -->
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			<postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.5</shadowSize>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<explosionDelay>100</explosionDelay>
+		</projectile>
+	</ThingDef>
+</Defs>

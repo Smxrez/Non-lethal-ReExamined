@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+		<Operation Class="PatchOperationSequence">
+			<operations>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ThingDef[defName = "VWE_Gun_Taser"]/verbs/li/range</xpath>
+		            <value>
+                    	<range>7.9</range>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ThingDef[defName = "VWE_Gun_Taser"]/statBases/AccuracyShort</xpath>
+		            <value>
+                    	<AccuracyShort>0.90</AccuracyShort>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ThingDef[defName = "VWE_Gun_Taser"]/statBases/AccuracyMedium</xpath>
+		            <value>
+                    	<AccuracyMedium>0.82</AccuracyMedium>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ThingDef[defName = "VWE_Gun_Taser"]/statBases/AccuracyLong</xpath>
+		            <value>
+                    	<AccuracyLong>0.68</AccuracyLong>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ThingDef[defName = "VWE_Bullet_RubberPistol"]/projectile/damageAmountBase</xpath>
+		            <value>
+                    	<damageAmountBase>8</damageAmountBase>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ThingDef[defName = "VWE_Gun_RubberBulletPistol"]/statBases/AccuracyTouch</xpath>
+		            <value>
+                    	<AccuracyTouch>0.95</AccuracyTouch>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ThingDef[defName = "VWE_Gun_RubberBulletPistol"]/statBases/AccuracyShort</xpath>
+		            <value>
+                    	<AccuracyShort>0.85</AccuracyShort>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ThingDef[defName = "VWE_Gun_RubberBulletPistol"]/statBases/AccuracyMedium</xpath>
+		            <value>
+                    	<AccuracyMedium>0.6</AccuracyMedium>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ThingDef[defName = "VWE_Gun_RubberBulletPistol"]/statBases/AccuracyLong</xpath>
+		            <value>
+                    	<AccuracyLong>0.5</AccuracyLong>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ResearchProjectDef[defName = "VWE_NonLethal"]/baseCost</xpath>
+		            <value>
+                    	<baseCost>1600</baseCost>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ResearchProjectDef[defName = "VWE_NonLethal"]/label</xpath>
+		            <value>
+                    	<label>non-lethal solutions</label>
+		            </value>
+		        </li>
+		        <li Class="PatchOperationReplace">
+		            <xpath>/Defs/ResearchProjectDef[defName = "VWE_NonLethal"]/description</xpath>
+		            <value>
+                    	<description>Craft a selection of non-lethal solutions, including tear gas launchers and tasers.</description>
+		            </value>
+		        </li>
+			</operations>
+	</Operation>
+</Patch>

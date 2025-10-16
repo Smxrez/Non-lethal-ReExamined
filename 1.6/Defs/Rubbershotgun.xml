@@ -1,0 +1,77 @@
+<Defs>
+  <ThingDef ParentName="BaseHumanMakeableGun">
+    <defName>Gun_RubberShotgun</defName>
+    <label>rubber shotgun</label>
+    <description>An ancient design of shotgun that emits a tight-packed spray of pellets. Deadly, but short range.</description>
+    <possessionCount>1</possessionCount>
+    <graphicData>
+      <texPath>RubberShotgun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_Shotgun</soundInteract>
+    <weaponClasses>
+      <li>ShortShots</li>
+    </weaponClasses>
+    <weaponTags>
+      <li>ShortShots</li>
+      <li>PumpShotgun</li>
+    </weaponTags>
+    <statBases>
+      <WorkToMake>12000</WorkToMake>
+      <Mass>3.4</Mass>
+      <AccuracyTouch>0.80</AccuracyTouch>
+      <AccuracyShort>0.87</AccuracyShort>
+      <AccuracyMedium>0.77</AccuracyMedium>
+      <AccuracyLong>0.64</AccuracyLong>
+      <RangedWeapon_Cooldown>2.4</RangedWeapon_Cooldown>
+    </statBases>
+    <costList>
+      <Steel>60</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <recipeMaker>
+      <skillRequirements>
+        <Crafting>5</Crafting>
+      </skillRequirements>
+      <displayPriority>430</displayPriority>
+    </recipeMaker>
+		<techLevel>Industrial</techLevel>
+		<weaponTags Inherit="False">
+			<li>NonLethal</li>
+		</weaponTags>
+		<generateCommonality>0.1</generateCommonality>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>VWE_Bullet_RubberPistol</defaultProjectile>
+        <burstShotCount>4</burstShotCount>
+		<ticksBetweenBurstShots>0.15</ticksBetweenBurstShots>        
+        <warmupTime>0.15</warmupTime>
+        <range>13.9</range>
+        <soundCast>Shot_Shotgun</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>stock</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+</Defs>

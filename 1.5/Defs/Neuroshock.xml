@@ -1,0 +1,74 @@
+<Defs>
+  <HediffDef ParentName="DiseaseBase">
+  <defName>NeuroshockHediff</defName>
+  <label>neuroshock</label>
+  <description>the body is overloaded with electricity.</description>
+  <isBad>true</isBad>
+  <initialSeverity>0.1</initialSeverity>
+  <maxSeverity>1</maxSeverity>
+  <comps>
+    <li Class="HediffCompProperties_Disappears">
+      <disappearsAfterTicks>5000~10000</disappearsAfterTicks>
+    </li>
+    <li Class="HediffCompProperties_SeverityPerDay">
+      <severityPerDay>-10</severityPerDay>
+    </li>
+  </comps>
+  <stages>
+    <li>
+      <minSeverity>0.6</minSeverity>
+      <label>wearing off</label>
+       <painOffset>0.1</painOffset>
+      <capMods>
+        <li>
+          <capacity>Moving</capacity>
+          <offset>-0.4</offset>
+        </li>
+        <li>
+          <capacity>Manipulation</capacity>
+          <offset>-0.4</offset>
+        </li>
+      </capMods>
+    </li>
+    <li>
+      <minSeverity>0.7</minSeverity>
+      <label>stunned</label>
+      <painOffset>0.50</painOffset>
+      <capMods>
+        <li>
+          <capacity>Moving</capacity>
+          <setMax>0.05</setMax>
+        </li>
+        <li>
+          <capacity>Manipulation</capacity>
+          <setMax>0.05</setMax>
+        </li>
+      </capMods>
+    </li>
+    </stages>
+  </HediffDef>
+
+  <DamageDef>
+    <defName>NeuroshockDMG</defName>
+    <label>neuroshock</label>
+    <workerClass>VanillaWeaponsExpandedNonLethal.DamageWorker_ConditionalStun</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been killed by electricity.</deathMessage>
+    <defaultDamage>0</defaultDamage>
+    <hediff>Gunshot</hediff>
+    <hediffSolid>Gunshot</hediffSolid>
+    <harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+    <additionalHediffs>
+      <li>
+        <hediff>NeuroshockHediff</hediff>
+		<severityPerDamageDealt>0.3</severityPerDamageDealt>
+      </li>
+    </additionalHediffs>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+    <isRanged>true</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+  </DamageDef>
+</Defs>
+
